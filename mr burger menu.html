@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mr Burger Cafe — Full Menu</title>
+<meta name="description" content="Mr Burger Cafe — Momos, Burgers, Chinese, Rolls, Pizza, Pasta & more." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pacifico&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   THEME — DARK / YELLOW / WARM WHITE
+   ============================================ */
+:root{
+  --bg-dark:#121212;
+  --bg-card:#1A1512;
+  --bg-card-hover:#241D18;
+  --gold:#FFC107;
+  --gold-light:#FFD54F;
+  --gold-dark:#FF8F00;
+  --text-light:#FFF8F0;
+  --text-muted:#A89F91;
+  --border-color:rgba(255,193,7,.15);
+
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow-sm:0 4px 12px rgba(0,0,0,.4);
+  --shadow-md:0 10px 30px rgba(0,0,0,.6);
+  --shadow-lg:0 20px 50px rgba(0,0,0,.8);
+  --transition:.3s cubic-bezier(.2,.7,.3,1);
+  --max:1200px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;}
+body{
+  font-family:'Poppins',system-ui,sans-serif;
+  background:var(--bg-dark);
+  color:var(--text-light);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+ul{list-style:none;}
+
+.container{width:min(100% - 2rem, var(--max));margin-inline:auto;}
+.section{padding:80px 0;position:relative;}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);
+  background:rgba(255,193,7,.1);
+  border:1px solid rgba(255,193,7,.25);
+  padding:.4rem 1rem;border-radius:999px;
+  margin-bottom:1rem;
+}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.4rem,5vw,3.8rem);
+  line-height:1;letter-spacing:.02em;
+  color:var(--text-light);
+  margin-bottom:.8rem;
+  font-weight:400;
+}
+.section-title span{color:var(--gold);}
+
+.section-sub{max-width:600px;color:var(--text-muted);font-size:.95rem;}
+.center{text-align:center;}
+.center .section-sub{margin-inline:auto;}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.9rem 1.8rem;border-radius:999px;
+  font-weight:600;font-size:.9rem;letter-spacing:.02em;
+  transition:var(--transition);white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dark) 100%);
+  color:#1A1512;
+  box-shadow:0 8px 20px rgba(255,193,7,.25);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,193,7,.4);}
+.btn-ghost{background:transparent;color:var(--text-light);border:1.5px solid var(--border-color);}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
+
+/* ============================================
+   HEADER & LOGO
+   ============================================ */
+.header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(18,18,18,.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border-color);
+  transition:var(--transition);
+}
+.header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.5);}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:.8rem 0;}
+
+/* ---- DIGITAL LOGO (Based on menu image) ---- */
+.logo{display:flex;align-items:center;gap:.75rem;}
+.logo-svg{height:65px;width:auto;}
+.logo-text{display:flex;flex-direction:column;line-height:1;}
+.logo-text .name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;color:var(--text-light);}
+.logo-text .name em{font-style:normal;color:var(--gold);}
+.logo-text .cafe{font-family:'Pacifico',cursive;font-size:1.1rem;color:var(--gold);line-height:1;margin-top:-2px;}
+.logo-text .tag{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-top:2px;}
+
+.nav-links{display:flex;align-items:center;gap:2rem;}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--text-muted);position:relative;padding:.3rem 0;transition:color var(--transition);}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;border-radius:2px;background:var(--gold);transition:width var(--transition);}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{width:100%;}
+
+.nav-actions{display:flex;align-items:center;gap:.75rem;}
+.nav-actions .btn{padding:.7rem 1.5rem;font-size:.85rem;}
+.burger-toggle{display:none;flex-direction:column;gap:5px;padding:.6rem;border-radius:10px;}
+.burger-toggle span{display:block;width:24px;height:2.5px;border-radius:3px;background:var(--text-light);transition:var(--transition);}
+.burger-toggle.active span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.burger-toggle.active span:nth-child(2){opacity:0;}
+.burger-toggle.active span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+/* ============================================
+   HERO / BANNER
+   ============================================ */
+.hero{
+  position:relative;overflow:hidden;
+  background:radial-gradient(800px 500px at 80% 20%, rgba(255,193,7,.1), transparent 60%),linear-gradient(160deg,#1A1512 0%,#121212 100%);
+  color:var(--text-light);
+  padding:80px 0 100px;
+  border-bottom:1px solid var(--border-color);
+}
+.hero .container{position:relative;z-index:2;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,5rem);line-height:.95;letter-spacing:.01em;margin-bottom:1rem;font-weight:400;}
+.hero h1 .accent{color:var(--gold);}
+.hero p.lead{font-size:1rem;color:var(--text-muted);max-width:480px;margin-bottom:2rem;font-weight:300;}
+
+.hero-visual{display:grid;place-items:center;position:relative;}
+.hero-plate{
+  width:min(100%,380px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 40% 30%, rgba(255,193,7,.2), transparent 60%),linear-gradient(150deg,#2E231D,#1A1512);
+  display:grid;place-items:center;font-size:10rem;line-height:1;
+  box-shadow:0 0 0 10px rgba(255,193,7,.05),0 0 0 25px rgba(255,193,7,.02),var(--shadow-lg);
+  animation:floaty 6s ease-in-out infinite;overflow:hidden;
+}
+.hero-plate img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-15px) rotate(2deg);}}
+
+.hero-tagline{
+  position:absolute;font-family:'Pacifico',cursive;color:var(--gold);
+  font-size:1.2rem;text-align:center;line-height:1.4;
+  text-shadow:0 2px 10px rgba(0,0,0,.5);
+}
+.tag-1{top:-20px;left:-20px;transform:rotate(-10deg);}
+.tag-2{bottom:-20px;right:-20px;transform:rotate(8deg);}
+
+/* QR Code Box */
+.qr-box{
+  position:absolute;top:20px;right:-10px;
+  background:var(--text-light);padding:.8rem;border-radius:12px;
+  color:#121212;text-align:center;font-size:.6rem;font-weight:700;
+  box-shadow:var(--shadow-md);z-index:10;
+}
+.qr-box svg{width:60px;height:60px;margin-bottom:.3rem;}
+.qr-box span{display:block;letter-spacing:.05em;}
+
+/* ============================================
+   MENU SECTION
+   ============================================ */
+.menu{background:var(--bg-dark);}
+.menu-head{display:flex;flex-direction:column;align-items:center;gap:1.5rem;margin-bottom:3rem;text-align:center;}
+
+/* Category Filters */
+.filters{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;max-width:1000px;margin:0 auto;}
+.filter-btn{
+  padding:.55rem 1.1rem;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--text-muted);
+  background:rgba(255,255,255,.04);border:1px solid var(--border-color);transition:var(--transition);
+}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold);}
+.filter-btn.active{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#1A1512;border-color:transparent;box-shadow:0 6px 15px rgba(255,193,7,.2);}
+
+/* Menu Grid */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
+
+/* Menu Category Card */
+.menu-category{
+  background:var(--bg-card);border-radius:var(--radius);padding:1.5rem;
+  box-shadow:var(--shadow-sm);border:1px solid var(--border-color);
+  transition:var(--transition);display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.menu-category:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:rgba(255,193,7,.3);}
+
+.category-header{
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:2px solid var(--gold);padding-bottom:.6rem;margin-bottom:1.2rem;
+}
+.category-title{
+  font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.05em;color:var(--gold);font-weight:400;
+}
+.category-img{
+  width:60px;height:60px;border-radius:50%;object-fit:cover;
+  border:2px solid var(--gold);
+}
+
+/* Menu Items */
+.menu-list{display:flex;flex-direction:column;gap:.8rem;}
+.menu-item{
+  display:flex;align-items:baseline;gap:.5rem;
+  font-size:.85rem;color:var(--text-light);
+}
+.menu-item .name{font-weight:500;}
+.menu-item .dots{flex:1;border-bottom:1.5px dotted rgba(255,193,7,.3);margin:0 .3rem;position:relative;top:-4px;}
+.menu-item .price{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--gold);letter-spacing:.03em;}
+
+/* Tags */
+.tag{font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;border-radius:4px;background:rgba(255,193,7,.15);color:var(--gold);margin-left:.3rem;}
+.tag.veg{background:rgba(76,175,80,.15);color:#81C784;}
+.tag.hot{background:rgba(232,93,4,.15);color:#FF8A65;}
+
+/* ============================================
+   FOOTER & BADGES
+   ============================================ */
+.features-strip{
+  background:var(--bg-card);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);
+  padding:2rem 0;
+}
+.features-grid{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;}
+.feature-badge{display:flex;align-items:center;gap:.6rem;font-size:.85rem;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:.1em;}
+.feature-badge .icon{color:var(--gold);font-size:1.2rem;}
+
+.footer{background:var(--bg-dark);color:var(--text-muted);padding:60px 0 0;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:2.5rem;padding-bottom:3rem;}
+.footer .logo-text .name{color:var(--text-light);}
+.footer .logo-text .tag{color:var(--text-muted);}
+.footer-about p{font-size:.85rem;margin:1rem 0 1.5rem;max-width:280px;line-height:1.7;}
+.socials{display:flex;gap:.6rem;}
+.socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.05);display:grid;place-items:center;font-size:.9rem;transition:var(--transition);}
+.socials a:hover{background:var(--gold);color:#121212;transform:translateY(-3px);}
+.footer h4{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-light);font-weight:700;margin-bottom:1.2rem;}
+.footer-links li{margin-bottom:.6rem;}
+.footer-links a{font-size:.85rem;transition:var(--transition);}
+.footer-links a:hover{color:var(--gold);padding-left:5px;}
+.footer-bottom{border-top:1px solid var(--border-color);padding:1.5rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;}
+.footer-bottom a:hover{color:var(--gold);}
+
+/* Thank You Section */
+.thank-you{
+  text-align:center;padding:3rem 0;background:var(--bg-card);
+  border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);
+}
+.thank-you h2{font-family:'Pacifico',cursive;font-size:2.5rem;color:var(--gold);margin-bottom:.5rem;}
+.thank-you p{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.15em;color:var(--text-muted);}
+
+/* ============================================
+   RESPONSIVE & UTILS
+   ============================================ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.3,1);}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem;text-align:center;}
+  .hero p.lead{margin-inline:auto;}
+  .hero-visual{order:-1;}
+  .hero-plate{width:min(100%,300px);font-size:8rem;}
+  .qr-box{position:relative;top:auto;right:auto;margin-top:1.5rem;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+}
+@media(max-width:820px){
+  .nav-links{
+    position:fixed;inset:0 0 0 auto;width:min(78vw,300px);background:var(--bg-dark);
+    flex-direction:column;align-items:flex-start;justify-content:flex-start;
+    padding:100px 2rem 2rem;gap:1.5rem;box-shadow:-20px 0 60px rgba(0,0,0,.8);
+    transform:translateX(105%);transition:transform .45s cubic-bezier(.2,.7,.3,1);z-index:999;
+    border-left:1px solid var(--border-color);
+  }
+  .nav-links.open{transform:translateX(0);}
+  .nav-links a{font-size:1rem;font-weight:600;}
+  .burger-toggle{display:flex;z-index:1001;}
+  .nav-actions .btn{display:none;}
+  .filters{max-width:100%;}
+  .features-grid{gap:1.5rem;}
+}
+@media(max-width:640px){
+  .section{padding:60px 0;}
+  .container{width:min(100% - 1.5rem, var(--max));}
+  .hero{padding:60px 0 80px;}
+  .hero-plate{font-size:6rem;}
+  .hero-tagline{font-size:1rem;}
+  .menu-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{justify-content:center;text-align:center;}
+  .features-grid{flex-direction:column;align-items:center;gap:1rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important;}
+  .reveal{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER WITH DIGITAL LOGO ══════════ -->
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav">
+
+      <!-- 🔷 DIGITAL LOGO (Based on menu image) -->
+      <a href="#" class="logo" aria-label="Mr Burger home">
+        <svg class="logo-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Flag -->
+          <path d="M100 35 L100 15 L130 22 L100 35 Z" fill="#FFC107"/>
+          <path d="M100 15 L100 35" stroke="#FFC107" stroke-width="3" stroke-linecap="round"/>
+          <!-- Top Bun -->
+          <path d="M60 75 C60 50 140 50 140 75 Z" fill="none" stroke="#FFF8F0" stroke-width="4"/>
+          <!-- Sesame Dots -->
+          <circle cx="85" cy="62" r="3" fill="#FFF8F0"/>
+          <circle cx="115" cy="62" r="3" fill="#FFF8F0"/>
+          <circle cx="100" cy="58" r="3" fill="#FFF8F0"/>
+          <circle cx="75" cy="70" r="2.5" fill="#FFF8F0"/>
+          <circle cx="125" cy="70" r="2.5" fill="#FFF8F0"/>
+          <!-- Patty / Cheese Drip -->
+          <rect x="60" y="80" width="80" height="20" rx="5" fill="none" stroke="#FFF8F0" stroke-width="4"/>
+          <path d="M60 80 L140 80 L140 85 C140 90 130 90 130 85 C130 95 120 95 120 85 C120 95 110 95 110 85 C110 95 100 95 100 85 C100 95 90 95 90 85 C90 95 80 95 80 85 C80 90 70 90 70 85 Z" fill="#FFC107"/>
+          <!-- Bottom Bun -->
+          <rect x="55" y="105" width="90" height="25" rx="10" fill="none" stroke="#FFF8F0" stroke-width="4"/>
+        </svg>
+        <span class="logo-text">
+          <span class="name">MR <em>BURGER</em></span>
+          <span class="cafe">Cafe</span>
+          <span class="tag">Come Hungry Go Happy</span>
+        </span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#features">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#menu" class="btn btn-primary">Order Now</a>
+        <button class="burger-toggle" id="burgerToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════ HERO / BANNER ══════════ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Since 2015 · Handcrafted Daily</span>
+        <h1>Fresh! Tasty!<br><span class="accent">Always.</span></h1>
+        <p class="lead">
+          From sizzling Momos to cheesy Pizzas, our menu is packed with flavours
+          you'll crave. Come hungry, go happy — that's our promise.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#menu" class="btn btn-primary">🍔 Explore Menu</a>
+          <a href="#contact" class="btn btn-ghost">📍 Find Us</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="hero-plate">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop" alt="Signature Burger">
+        </div>
+        
+        <!-- Taglines from the menu image -->
+        <div class="hero-tagline tag-1">Fresh!<br>Tasty!<br>Always</div>
+        <div class="hero-tagline tag-2">Good<br>Food<br>Good<br>Mood</div>
+
+        <!-- QR Code Section -->
+        <div class="qr-box">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="20" height="20" fill="#121212"/>
+            <rect x="15" y="15" width="10" height="10" fill="#FFF8F0"/>
+            <rect x="70" y="10" width="20" height="20" fill="#121212"/>
+            <rect x="75" y="15" width="10" height="10" fill="#FFF8F0"/>
+            <rect x="10" y="70" width="20" height="20" fill="#121212"/>
+            <rect x="15" y="75" width="10" height="10" fill="#FFF8F0"/>
+            <rect x="40" y="10" width="20" height="20" fill="#121212"/>
+            <rect x="45" y="15" width="10" height="10" fill="#FFF8F0"/>
+            <rect x="70" y="40" width="20" height="20" fill="#121212"/>
+            <rect x="75" y="45" width="10" height="10" fill="#FFF8F0"/>
+            <rect x="10" y="40" width="20" height="20" fill="#121212"/>
+            <rect x="15" y="45" width="10" height="10" fill="#FFF8F0"/>
+            <rect x="40" y="70" width="20" height="20" fill="#121212"/>
+            <rect x="45" y="75" width="10" height="10" fill="#FFF8F0"/>
+            <rect x="70" y="70" width="20" height="20" fill="#121212"/>
+            <rect x="75" y="75" width="10" height="10" fill="#FFF8F0"/>
+            <rect x="40" y="40" width="20" height="20" fill="#121212"/>
+            <rect x="45" y="45" width="10" height="10" fill="#FFF8F0"/>
+          </svg>
+          <span>SCAN TO VIEW<br>OUR MENU</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MENU ══════════ -->
+<section class="section menu" id="menu">
+  <div class="container">
+    <div class="menu-head reveal">
+      <div>
+        <span class="eyebrow">Our Full Menu</span>
+        <h2 class="section-title">What Would You <span>Like Today?</span></h2>
+        <p class="section-sub">From Momos to Pizza, Rolls to Shakes — we have it all.</p>
+      </div>
+      
+      <!-- Category Filters -->
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="momos">Momos</button>
+        <button class="filter-btn" data-filter="tandoor">Tandoor Se</button>
+        <button class="filter-btn" data-filter="sandwich">Sandwich</button>
+        <button class="filter-btn" data-filter="fries">Fries</button>
+        <button class="filter-btn" data-filter="chat">Chat</button>
+        <button class="filter-btn" data-filter="combo">Combos</button>
+        <button class="filter-btn" data-filter="extra">Extra</button>
+        <button class="filter-btn" data-filter="dosa">Dosa</button>
+        <button class="filter-btn" data-filter="beverages">Beverages</button>
+        <button class="filter-btn" data-filter="pasta">Pasta</button>
+        <button class="filter-btn" data-filter="chinese">Chinese</button>
+        <button class="filter-btn" data-filter="rolls">Rolls</button>
+        <button class="filter-btn" data-filter="icecream">Ice Cream</button>
+        <button class="filter-btn" data-filter="shakes">Shakes</button>
+        <button class="filter-btn" data-filter="pizza">Pizza</button>
+        <button class="filter-btn" data-filter="burgers">Burgers</button>
+      </div>
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+
+      <!-- ── CHINESE ── -->
+      <div class="menu-category reveal" data-category="chinese">
+        <div class="category-header">
+          <h3 class="category-title">CHINESE</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=200&auto=format&fit=crop" alt="Chinese">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Hakka Noodles</span><span class="dots"></span><span class="price">160</span></div>
+          <div class="menu-item"><span class="name">Chowmein</span><span class="dots"></span><span class="price">160</span></div>
+          <div class="menu-item"><span class="name">Chilli Garlic Noodles</span><span class="dots"></span><span class="price">180</span></div>
+          <div class="menu-item"><span class="name">Singapore Noodles</span><span class="dots"></span><span class="price">190</span></div>
+          <div class="menu-item"><span class="name">Paneer Noodles</span><span class="dots"></span><span class="price">200</span></div>
+          <div class="menu-item"><span class="name">Korean Noodles</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Fried Rice</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Schezwan Fried Rice</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Paneer Fried Rice</span><span class="dots"></span><span class="price">170</span></div>
+          <div class="menu-item"><span class="name">Chilli Paneer (Dry/Gravy)</span><span class="dots"></span><span class="price">140</span></div>
+          <div class="menu-item"><span class="name">Manchurian (Dry/Gravy)</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Spring Roll</span><span class="dots"></span><span class="price">140</span></div>
+          <div class="menu-item"><span class="name">Honey Chilli Potato</span><span class="dots"></span><span class="price">140</span></div>
+          <div class="menu-item"><span class="name">Chilli Potato</span><span class="dots"></span><span class="price">140</span></div>
+        </div>
+      </div>
+
+      <!-- ── ROLLS ── -->
+      <div class="menu-category reveal" data-category="rolls">
+        <div class="category-header">
+          <h3 class="category-title">ROLLS</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?q=80&w=200&auto=format&fit=crop" alt="Rolls">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Veggie Roll</span><span class="dots"></span><span class="price">80</span></div>
+          <div class="menu-item"><span class="name">Chilli Chowmein Roll</span><span class="dots"></span><span class="price">80</span></div>
+          <div class="menu-item"><span class="name">Paneer Roll</span><span class="dots"></span><span class="price">90</span></div>
+          <div class="menu-item"><span class="name">Kathi Chap Roll</span><span class="dots"></span><span class="price">90</span></div>
+          <div class="menu-item"><span class="name">Kathi Paneer Roll</span><span class="dots"></span><span class="price">110</span></div>
+          <div class="menu-item"><span class="name">Paneer Tikka Roll</span><span class="dots"></span><span class="price">110</span></div>
+          <div class="menu-item"><span class="name">Cheese Corn Roll</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Afgani Malai Roll</span><span class="dots"></span><span class="price">100</span></div>
+        </div>
+      </div>
+
+      <!-- ── ICE CREAM ── -->
+      <div class="menu-category reveal" data-category="icecream">
+        <div class="category-header">
+          <h3 class="category-title">ICE CREAM</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=200&auto=format&fit=crop" alt="Ice Cream">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Chocolate</span><span class="dots"></span><span class="price">90</span></div>
+          <div class="menu-item"><span class="name">Tutti Frutti</span><span class="dots"></span><span class="price">90</span></div>
+          <div class="menu-item"><span class="name">American Nut</span><span class="dots"></span><span class="price">90</span></div>
+          <div class="menu-item"><span class="name">Kesar Pista</span><span class="dots"></span><span class="price">90</span></div>
+        </div>
+      </div>
+
+      <!-- ── SHAKES ── -->
+      <div class="menu-category reveal" data-category="shakes">
+        <div class="category-header">
+          <h3 class="category-title">SHAKES</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=200&auto=format&fit=crop" alt="Shakes">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Cold Coffee</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Chocolate Frappe</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">KitKat Frappe</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Strawberry Frappe</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Vanilla Frappe</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Oreo Shake</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Black Currant Frappe</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Mango Frappe</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Brownie Shake</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Butterscotch Frappe</span><span class="dots"></span><span class="price">100</span></div>
+        </div>
+      </div>
+
+      <!-- ── PIZZA ── -->
+      <div class="menu-category reveal" data-category="pizza">
+        <div class="category-header">
+          <h3 class="category-title">PIZZA</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=200&auto=format&fit=crop" alt="Pizza">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Margarita</span><span class="dots"></span><span class="price">220</span></div>
+          <div class="menu-item"><span class="name">Corn Pepper</span><span class="dots"></span><span class="price">260</span></div>
+          <div class="menu-item"><span class="name">Cottage Cheese</span><span class="dots"></span><span class="price">150</span></div>
+          <div class="menu-item"><span class="name">Garlic Bread</span><span class="dots"></span><span class="price">150</span></div>
+          <div class="menu-item"><span class="name">Jalapeno Olive Garden</span><span class="dots"></span><span class="price">240</span></div>
+          <div class="menu-item"><span class="name">Farm House</span><span class="dots"></span><span class="price">260</span></div>
+          <div class="menu-item"><span class="name">Paneer Makhani</span><span class="dots"></span><span class="price">250</span></div>
+          <div class="menu-item"><span class="name">Four Cheese</span><span class="dots"></span><span class="price">290</span></div>
+          <div class="menu-item"><span class="name">Cheese Burst</span><span class="dots"></span><span class="price">320</span></div>
+          <div class="menu-item"><span class="name">Cheese Burst Farm House</span><span class="dots"></span><span class="price">350</span></div>
+        </div>
+      </div>
+
+      <!-- ── BURGERS ── -->
+      <div class="menu-category reveal" data-category="burgers">
+        <div class="category-header">
+          <h3 class="category-title">BURGERS</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=200&auto=format&fit=crop" alt="Burgers">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Desi Burger</span><span class="dots"></span><span class="price">70</span></div>
+          <div class="menu-item"><span class="name">Spicy Burger</span><span class="dots"></span><span class="price">70</span></div>
+          <div class="menu-item"><span class="name">Farm Aloo Tikki Burger</span><span class="dots"></span><span class="price">80</span></div>
+          <div class="menu-item"><span class="name">Tandoori Burger</span><span class="dots"></span><span class="price">80</span></div>
+          <div class="menu-item"><span class="name">Crunchy Paneer Burger</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Pizza Burger</span><span class="dots"></span><span class="price">90</span></div>
+          <div class="menu-item"><span class="name">Cheese Burger</span><span class="dots"></span><span class="price">90</span></div>
+          <div class="menu-item"><span class="name">Spicy Paneer Burger</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Jumbo Burger</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Chilli Korean Burger</span><span class="dots"></span><span class="price">120</span></div>
+        </div>
+      </div>
+
+      <!-- ── MOMOS ── -->
+      <div class="menu-category reveal" data-category="momos">
+        <div class="category-header">
+          <h3 class="category-title">MOMOS</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=200&auto=format&fit=crop" alt="Momos">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Veggie Momo (Steam/Fry)</span><span class="dots"></span><span class="price">70</span></div>
+          <div class="menu-item"><span class="name">Paneer Momo (Steam/Fry)</span><span class="dots"></span><span class="price">90</span></div>
+          <div class="menu-item"><span class="name">Tandoori Momo</span><span class="dots"></span><span class="price">130</span></div>
+          <div class="menu-item"><span class="name">Crunchy Veggie Momo</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Crunchy Paneer Momo</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Cheese Corn Momo (Steam/Fry)</span><span class="dots"></span><span class="price">110</span></div>
+          <div class="menu-item"><span class="name">Chilli Momo</span><span class="dots"></span><span class="price">140</span></div>
+          <div class="menu-item"><span class="name">Cheese Lapaata Momo</span><span class="dots"></span><span class="price">150</span></div>
+        </div>
+      </div>
+
+      <!-- ── TANDOOR SE ── -->
+      <div class="menu-category reveal" data-category="tandoor">
+        <div class="category-header">
+          <h3 class="category-title">TANDOOR SE</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=200&auto=format&fit=crop" alt="Tandoori">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Soya Chap</span><span class="dots"></span><span class="price">190</span></div>
+          <div class="menu-item"><span class="name">Paneer Tikka</span><span class="dots"></span><span class="price">200</span></div>
+          <div class="menu-item"><span class="name">Crunchy Chap</span><span class="dots"></span><span class="price">150</span></div>
+          <div class="menu-item"><span class="name">Tandoori Aloo</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Afgani Malai Chap</span><span class="dots"></span><span class="price">240</span></div>
+          <div class="menu-item"><span class="name">Malai Paneer Tikka</span><span class="dots"></span><span class="price">240</span></div>
+        </div>
+      </div>
+
+      <!-- ── GRILL SANDWICH ── -->
+      <div class="menu-category reveal" data-category="sandwich">
+        <div class="category-header">
+          <h3 class="category-title">GRILL SANDWICH</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=200&auto=format&fit=crop" alt="Sandwich">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Veg Sandwich</span><span class="dots"></span><span class="price">80</span></div>
+          <div class="menu-item"><span class="name">Peri Peri Paneer</span><span class="dots"></span><span class="price">90</span></div>
+          <div class="menu-item"><span class="name">Cheese Corn Sandwich</span><span class="dots"></span><span class="price">100</span></div>
+        </div>
+      </div>
+
+      <!-- ── FRIES ── -->
+      <div class="menu-category reveal" data-category="fries">
+        <div class="category-header">
+          <h3 class="category-title">FRIES</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=200&auto=format&fit=crop" alt="Fries">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Classic Fries</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Peri Peri Fries</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Cheese Fries</span><span class="dots"></span><span class="price">140</span></div>
+          <div class="menu-item"><span class="name">Loaded Fries</span><span class="dots"></span><span class="price">120</span></div>
+        </div>
+      </div>
+
+      <!-- ── CHAT ── -->
+      <div class="menu-category reveal" data-category="chat">
+        <div class="category-header">
+          <h3 class="category-title">CHAT</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=200&auto=format&fit=crop" alt="Chat">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Pao Bhaji</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Chole Bhature</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Vada Pav</span><span class="dots"></span><span class="price">70</span></div>
+          <div class="menu-item"><span class="name">Crispy Corn</span><span class="dots"></span><span class="price">150</span></div>
+          <div class="menu-item"><span class="name">Aloo Chat</span><span class="dots"></span><span class="price">80</span></div>
+        </div>
+      </div>
+
+      <!-- ── COMBO ── -->
+      <div class="menu-category reveal" data-category="combo">
+        <div class="category-header">
+          <h3 class="category-title">COMBO</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=200&auto=format&fit=crop" alt="Combo">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Veggie Burger + Fries + Thumsup</span><span class="dots"></span><span class="price">150</span></div>
+          <div class="menu-item"><span class="name">Crunchy Burger + Fries + Thumsup</span><span class="dots"></span><span class="price">170</span></div>
+          <div class="menu-item"><span class="name">Gravy Chaap + 2 Rumali Roti</span><span class="dots"></span><span class="price">160</span></div>
+          <div class="menu-item"><span class="name">Paneer Tikka Masala + 2 Rumali Roti</span><span class="dots"></span><span class="price">180</span></div>
+          <div class="menu-item"><span class="name">Dal Makhni + 2 Rumali Roti</span><span class="dots"></span><span class="price">150</span></div>
+          <div class="menu-item"><span class="name">Amritsari Chole + 2 Laccha Paratha</span><span class="dots"></span><span class="price">120</span></div>
+          <div class="menu-item"><span class="name">Fried Rice + Manchurian</span><span class="dots"></span><span class="price">140</span></div>
+          <div class="menu-item"><span class="name">Hakka Noodles + Manchurian</span><span class="dots"></span><span class="price">160</span></div>
+          <div class="menu-item"><span class="name">Soya Keema + Pao</span><span class="dots"></span><span class="price">100</span></div>
+          <div class="menu-item"><span class="name">Paneer Bhurji + Pao</span><span class="dots"></span><span class="price">120</span></div>
+        </div>
+      </div>
+
+      <!-- ── EXTRA ── -->
+      <div class="menu-category reveal" data-category="extra">
+        <div class="category-header">
+          <h3 class="category-title">EXTRA</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?q=80&w=200&auto=format&fit=crop" alt="Bread">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Rumali Roti</span><span class="dots"></span><span class="price">30</span></div>
+          <div class="menu-item"><span class="name">Laccha Paratha</span><span class="dots"></span><span class="price">30</span></div>
+          <div class="menu-item"><span class="name">Pao</span><span class="dots"></span><span class="price">50</span></div>
+        </div>
+      </div>
+
+      <!-- ── DOSA ── -->
+      <div class="menu-category reveal" data-category="dosa">
+        <div class="category-header">
+          <h3 class="category-title">DOSA</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=200&auto=format&fit=crop" alt="Dosa">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Butter Masala Dosa</span><span class="dots"></span><span class="price">140</span></div>
+          <div class="menu-item"><span class="name">Butter Paneer Dosa</span><span class="dots"></span><span class="price">160</span></div>
+        </div>
+      </div>
+
+      <!-- ── BEVERAGES ── -->
+      <div class="menu-category reveal" data-category="beverages">
+        <div class="category-header">
+          <h3 class="category-title">BEVERAGES</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=200&auto=format&fit=crop" alt="Drinks">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Virgin Mojito</span><span class="dots"></span><span class="price">110</span></div>
+          <div class="menu-item"><span class="name">Soda Shikanji</span><span class="dots"></span><span class="price">50</span></div>
+          <div class="menu-item"><span class="name">Soft Drink</span><span class="dots"></span><span class="price">30</span></div>
+          <div class="menu-item"><span class="name">Water Bottle</span><span class="dots"></span><span class="price">20</span></div>
+          <div class="menu-item"><span class="name">Hot Coffee</span><span class="dots"></span><span class="price">50</span></div>
+          <div class="menu-item"><span class="name">Fruit Beer (Peach/Strawberry/Cranberry)</span><span class="dots"></span><span class="price">60</span></div>
+        </div>
+      </div>
+
+      <!-- ── PASTA ── -->
+      <div class="menu-category reveal" data-category="pasta">
+        <div class="category-header">
+          <h3 class="category-title">PASTA</h3>
+          <img class="category-img" src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=200&auto=format&fit=crop" alt="Pasta">
+        </div>
+        <div class="menu-list">
+          <div class="menu-item"><span class="name">Red Sauce Pasta</span><span class="dots"></span><span class="price">180</span></div>
+          <div class="menu-item"><span class="name">White Sauce Pasta</span><span class="dots"></span><span class="price">200</span></div>
+          <div class="menu-item"><span class="name">Mix Sauce Pasta</span><span class="dots"></span><span class="price">200</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FEATURES STRIP ══════════ -->
+<div class="features-strip">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-badge"><span class="icon">🥗</span> FRESH INGREDIENTS</div>
+      <div class="feature-badge"><span class="icon">👨‍🍳</span> QUALITY FOOD</div>
+      <div class="feature-badge"><span class="icon">❤️</span> GREAT TASTE</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ THANK YOU SECTION ══════════ -->
+<div class="thank-you">
+  <h2>Thank You</h2>
+  <p>VISIT AGAIN</p>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="logo">
+          <svg class="logo-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:55px;">
+            <path d="M100 35 L100 15 L130 22 L100 35 Z" fill="#FFC107"/>
+            <path d="M100 15 L100 35" stroke="#FFC107" stroke-width="3" stroke-linecap="round"/>
+            <path d="M60 75 C60 50 140 50 140 75 Z" fill="none" stroke="#FFF8F0" stroke-width="4"/>
+            <circle cx="85" cy="62" r="3" fill="#FFF8F0"/>
+            <circle cx="115" cy="62" r="3" fill="#FFF8F0"/>
+            <circle cx="100" cy="58" r="3" fill="#FFF8F0"/>
+            <rect x="60" y="80" width="80" height="20" rx="5" fill="none" stroke="#FFF8F0" stroke-width="4"/>
+            <path d="M60 80 L140 80 L140 85 C140 90 130 90 130 85 C130 95 120 95 120 85 C120 95 110 95 110 85 C110 95 100 95 100 85 C100 95 90 95 90 85 C90 95 80 95 80 85 C80 90 70 90 70 85 Z" fill="#FFC107"/>
+            <rect x="55" y="105" width="90" height="25" rx="10" fill="none" stroke="#FFF8F0" stroke-width="4"/>
+          </svg>
+          <span class="logo-text">
+            <span class="name">MR <em>BURGER</em></span>
+            <span class="cafe">Cafe</span>
+          </span>
+        </div>
+        <p>Handcrafted burgers, flame-grilled daily and served with a whole lot of love since 2015.</p>
+
+        </div>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Araon Rd, near Bank of Baroda, Sirsaganj, Uttar Pradesh 283151</p>
+      </div>
+    <div class="footer-bottom">
+      <span>© 2025 Mr Burger Cafe. All rights reserved.</span>
+      <span>Made with 🔥 &amp; 🧀 · 
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+/* ---------- Mobile nav ---------- */
+const burgerToggle = document.getElementById('burgerToggle');
+const navLinks = document.getElementById('navLinks');
+burgerToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  burgerToggle.classList.toggle('active', open);
+  burgerToggle.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burgerToggle.classList.remove('active');
+    burgerToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ---------- Header shadow on scroll ---------- */
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ---------- Menu filter ---------- */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const categories = document.querySelectorAll('.menu-category');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    categories.forEach(cat => {
+      const match = filter === 'all' || cat.dataset.category === filter;
+      cat.style.display = match ? 'flex' : 'none';
+      if (match) {
+        cat.style.animation = 'none';
+        void cat.offsetWidth;
+        cat.style.animation = 'fadeIn .45s ease both';
+      }
+    });
+  });
+});
+const styleEl = document.createElement('style');
+styleEl.textContent = `@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}`;
+document.head.appendChild(styleEl);
+
+/* ---------- Scroll reveal ---------- */
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('visible'));
+}
+</script>
+
+</body>
+</html>
